@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:linear_calender/linear_calender.dart';
 
-import 'home.dart';
+// import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -33,9 +36,44 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Home(),
+      home: Home(),
     );
   }
 }
 
+class Home extends StatelessWidget {
+  RxString dateTime = ''.obs;
 
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("linear Calender"),
+      ),
+      body: Column(
+        children: [
+          LinearCalendar(
+            selectedColor: Colors.green,
+            unselectedColor: Colors.amber,
+            onChanged: (DateTime value) {
+              debugPrint(
+                  "*****************${value}***************************");
+
+              dateTime.value = '${value}';
+            },
+            height: 70,
+            unselectedTextColor: Colors.black,
+            selectedTextColor: Colors.white,
+            backgroundColor: Colors.transparent,
+          ),
+          Center(
+              child: Obx(() => Text(
+                    '${dateTime.value}',
+                    style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),
+                  )))
+        ],
+      ),
+    );
+  }
+}

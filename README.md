@@ -1,39 +1,80 @@
 <!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
+# A Flutter package for Linear Calender.
+# Use intl class for date and time.
 -->
+# Linear Date Picker - Flutter Package
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A simple and customizable linear date picker for Flutter, designed to offer a smooth and intuitive date selection experience. Perfect for apps that require a sleek, minimalistic, and horizontal date picker interface. With flexible styling options, you can easily integrate it into your app's design and enhance user interactions.
+
+
+![Linear Date Picker Demo](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTZ5dGxsMmluN2J5cXM1NGo3NGZha2hqbzRnMjBrcXh2MGZzcWRxbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZKt2G4h20KcYe2QaMB/giphy.gif)
+
 
 ## Features
+1. Linear, horizontal date selection
+2. Customizable appearance (colors, text style, etc.)
+3. Supports multiple date formats
+4. Easy to integrate and use
+5. Realtime date change.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Getting Started
+At first Add dependency
 
-## Getting started
+To use `Linear_Calendar_Flutter`, add the following line to your `pubspec.yaml` file:
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  linear_calendar_flutter: ^0.0.1
+  ```
+
+
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Then import
 
 ```dart
-const like = 'sample';
+import 'package:linear_calendar_flutter/linear_calendar_flutter.dart';
+```
+
+Then use this code
+
+
+```dart
+
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Linear Calendar Example")),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: LinearCalendar(
+            selectedColor: Colors.green,
+            unselectedColor: Colors.amber,
+            onChanged: (DateTime value) {
+              debugPrint(
+                  "*****************${value}***************************");
+            },
+            height: 70,
+            unselectedTextColor: Colors.black,
+            selectedTextColor: Colors.white,
+            backgroundColor: Colors.transparent,
+          )
+        ),
+      ),
+    );
+  }
+}
+
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+

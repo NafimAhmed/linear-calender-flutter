@@ -66,8 +66,8 @@ class _LinearCalendarState extends State<LinearCalendar> {
             },
             child: Container(
               // height: 50,
-              padding: EdgeInsets.all(8.0),
-              margin: EdgeInsets.symmetric(horizontal: 4.0),
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.symmetric(horizontal: 4.0),
               decoration: BoxDecoration(
                 color: isSelected ? widget.selectedColor??Colors.blue : widget.unselectedColor??Colors.transparent,
                 // borderRadius: BorderRadius.circular(8),
@@ -81,17 +81,17 @@ class _LinearCalendarState extends State<LinearCalendar> {
                   children: [
                     Text(
                       DateFormat('E').format(date), // Day name (e.g. Mon)
-                      style: isSelected ? widget.selectedTextStyle??TextStyle(color: Colors.white,fontSize: 18):widget.unselectedTextStyle??TextStyle(color: Colors.black,fontSize: 18)
+                      style: isSelected ? widget.selectedTextStyle??const TextStyle(color: Colors.white,fontSize: 18):widget.unselectedTextStyle??const TextStyle(color: Colors.black,fontSize: 18)
 
 
                       // TextStyle(
                       //   color: isSelected ? widget.selectedTextColor : widget.unselectedTextColor,
                       // ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       date.day.toString(), // Day number (e.g. 12)
-                      style: isSelected ? widget.selectedTextStyle??TextStyle(color: Colors.white,fontSize: 18) : widget.unselectedTextStyle??TextStyle(color: Colors.black,fontSize: 18),
+                      style: isSelected ? widget.selectedTextStyle??const TextStyle(color: Colors.white,fontSize: 18) : widget.unselectedTextStyle??const TextStyle(color: Colors.black,fontSize: 18),
                     ),
                   ],
                 ),

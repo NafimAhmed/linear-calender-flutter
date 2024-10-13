@@ -14,17 +14,17 @@ import 'package:intl/intl.dart';
 
 class LinearCalendar extends StatefulWidget {
 
-  final Color selectedColor;
-  final Color unselectedColor;
-  final Color unselectedTextColor;
-  final Color selectedTextColor;
-  final Color backgroundColor;
+  final Color? selectedColor;
+  final Color? unselectedColor;
+  final TextStyle? unselectedTextStyle;
+  final TextStyle? selectedTextStyle;
+  final Color? backgroundColor;
 
-  final double height;
+  final double? height;
 
   final ValueChanged<DateTime> onChanged;
 
-  const LinearCalendar({super.key, required this.selectedColor, required this.unselectedColor, required this.onChanged, required this.height, required this.unselectedTextColor, required this.selectedTextColor, required this.backgroundColor});
+  const LinearCalendar({super.key,  this.selectedColor, this.unselectedColor, required this.onChanged, this.height, this.backgroundColor, this.unselectedTextStyle, this.selectedTextStyle});
 
   @override
   _LinearCalendarState createState() => _LinearCalendarState();
@@ -45,7 +45,7 @@ class _LinearCalendarState extends State<LinearCalendar> {
     List<DateTime> dates = generateCalendarDates(DateTime.now(), 30);
 
     return Container(
-      height: widget.height,
+      height: widget.height??70,
       color: widget.backgroundColor,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -69,30 +69,32 @@ class _LinearCalendarState extends State<LinearCalendar> {
               padding: EdgeInsets.all(8.0),
               margin: EdgeInsets.symmetric(horizontal: 4.0),
               decoration: BoxDecoration(
-                color: isSelected ? widget.selectedColor : widget.unselectedColor,
+                color: isSelected ? widget.selectedColor??Colors.blue : widget.unselectedColor??Colors.transparent,
                 // borderRadius: BorderRadius.circular(8),
                 // border: Border.all(
                 //   color: isSelected ? Colors.blueAccent : Colors.transparent,
                 // ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    DateFormat('E').format(date), // Day name (e.g. Mon)
-                    style: TextStyle(
-                      color: isSelected ? widget.selectedTextColor : widget.unselectedTextColor,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      DateFormat('E').format(date), // Day name (e.g. Mon)
+                      style: isSelected ? widget.selectedTextStyle??TextStyle(color: Colors.white,fontSize: 18):widget.unselectedTextStyle??TextStyle(color: Colors.black,fontSize: 18)
+
+
+                      // TextStyle(
+                      //   color: isSelected ? widget.selectedTextColor : widget.unselectedTextColor,
+                      // ),
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    date.day.toString(), // Day number (e.g. 12)
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: isSelected ? widget.selectedTextColor : widget.unselectedTextColor,
+                    SizedBox(height: 4),
+                    Text(
+                      date.day.toString(), // Day number (e.g. 12)
+                      style: isSelected ? widget.selectedTextStyle??TextStyle(color: Colors.white,fontSize: 18) : widget.unselectedTextStyle??TextStyle(color: Colors.black,fontSize: 18),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

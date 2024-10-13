@@ -54,18 +54,13 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           LinearCalendar(
-            selectedColor: Colors.green,
-            unselectedColor: Colors.amber,
             onChanged: (DateTime value) {
               debugPrint(
                   "*****************${value}***************************");
 
               dateTime.value = '${value}';
             },
-            height: 70,
-            unselectedTextColor: Colors.black,
-            selectedTextColor: Colors.white,
-            backgroundColor: Colors.transparent,
+
           ),
           Center(
               child: Obx(() => Text(

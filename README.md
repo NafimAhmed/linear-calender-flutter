@@ -24,7 +24,7 @@ To use `Linear_Calendar_Flutter`, add the following line to your `pubspec.yaml` 
 
 ```yaml
 dependencies:
-  linear_calendar_flutter: ^0.0.1
+  linear_calendar_flutter: ^0.0.4
   ```
 
 
@@ -77,4 +77,16 @@ class MyApp extends StatelessWidget {
 
 ## Additional information
 
+### Customization
+The `Linear Date Picker` package is designed to be highly customizable. You can easily adjust the colors, text styles, and formatting options to match your app’s design theme. Additionally, the picker can be tailored for different locales, ensuring your app delivers a consistent experience for users in various regions.
 
+### Compatibility
+This package is compatible with Flutter apps targeting both Android and iOS platforms. It has been tested on multiple devices and screen sizes to ensure a smooth user experience. The package is also optimized for performance, making it suitable for apps with large date ranges.
+
+### Installation
+To use the `Linear Date Picker`, add the following to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  linear_date_picker: ^0.0.4
+```

@@ -1,3 +1,11 @@
+## [0.0.5] - 2024-10-20
+### Added
+- Border redious for all date elements.
+- Border color, border width enabled.
+- Month enabled.
+
+### Fixed
+- Compatible for all flutter SDK.
 
 ## [0.0.4] - 2024-10-13
 ### Added

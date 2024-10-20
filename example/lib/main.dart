@@ -56,7 +56,7 @@ class Home extends StatelessWidget {
           LinearCalendar(
             // selectedBorderColor: Colors.green,
             // unselectedBorderColor: Colors.grey,
-            height: 100,
+            height: 120,
             monthVisibility: true,
             borderwidth: 10,
             onChanged: (DateTime value) {

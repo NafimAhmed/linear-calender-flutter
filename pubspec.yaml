@@ -1,11 +1,11 @@
 name: linear_calender
 description: "A linear calender for flutter"
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/NafimAhmed/linear-calender-flutter
 repository: https://github.com/NafimAhmed/linear-calender-flutter
 
 environment:
-  sdk: ^3.5.3
+  sdk: ">=2.17.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

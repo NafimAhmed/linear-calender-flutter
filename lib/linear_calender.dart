@@ -9,8 +9,8 @@ class LinearCalendar extends StatefulWidget {
   final DateTime startDate;
   final Color? selectedColor;
   final Color? unselectedColor;
+  final int dateDuration;
 
-  final bool roundedDateStyle;
 
   final TextStyle? unselectedTextStyle;
   final TextStyle? selectedTextStyle;
@@ -25,7 +25,6 @@ class LinearCalendar extends StatefulWidget {
   final double? itemRadius;
   final double? borderwidth;
   final bool? monthVisibility;
-  final int dateDuration;
 
   final double? height;
 
@@ -48,8 +47,7 @@ class LinearCalendar extends StatefulWidget {
       this.unselectedBorderColor,
       required this.startDate,
       this.dayTileWidth,
-      this.dayTileHeight,
-        this.roundedDateStyle=false, this.dateDuration=30});
+      this.dayTileHeight, this.dateDuration=30});
 
   @override
   _LinearCalendarState createState() => _LinearCalendarState();
@@ -111,7 +109,7 @@ class _LinearCalendarState extends State<LinearCalendar> {
               margin: const EdgeInsets.symmetric(horizontal: 4.0),
               decoration: BoxDecoration(
                 color: isSelected
-                    ? widget.roundedDateStyle==false? widget.selectedColor ?? Colors.blue:widget.unselectedColor ?? Colors.transparent
+                    ? widget.selectedColor ?? Colors.blue
                     : widget.unselectedColor ?? Colors.transparent,
                 borderRadius: BorderRadius.circular(widget.itemWidth ?? 8),
                 border: Border.all(
@@ -140,7 +138,7 @@ class _LinearCalendarState extends State<LinearCalendar> {
                     const SizedBox(height: 4),
 
 
-                    widget.roundedDateStyle==false?
+
                     Text(
                       date.day.toString(), // Day number (e.g. 12)
                       style: isSelected
@@ -149,24 +147,6 @@ class _LinearCalendarState extends State<LinearCalendar> {
                           : widget.unselectedTextStyle ??
                               const TextStyle(
                                   color: Colors.black, fontSize: 18),
-                    ):Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: isSelected?widget.selectedColor??Colors.green:widget.unselectedColor??Colors.white,
-
-                      ),
-                      child: Text(
-                        date.day.toString(), // Day number (e.g. 12)
-                        style: isSelected
-                            ? widget.selectedTextStyle ??
-                            const TextStyle(color: Colors.white, fontSize: 18)
-                            : widget.unselectedTextStyle ??
-                            const TextStyle(
-                                color: Colors.black, fontSize: 18),
-                      ),
                     ),
 
                     //const SizedBox(height: 4),

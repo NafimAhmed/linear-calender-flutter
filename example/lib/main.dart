@@ -60,13 +60,14 @@ class Home extends StatelessWidget {
 
 
 
-            roundedDateStyle: true,
+
             dateDuration: 60,
-             selectedBorderColor: Colors.grey,
+             selectedBorderColor: Colors.blue,
+
             // unselectedBorderColor: Colors.grey,
             height: 120,
-            monthVisibility: false,
-            selectedColor: Colors.grey,
+            monthVisibility: true,
+            selectedColor: Colors.blue,
             borderwidth: 5,
             onChanged: (DateTime value) {
               debugPrint(

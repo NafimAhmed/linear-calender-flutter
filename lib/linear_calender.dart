@@ -6,17 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class LinearCalendar extends StatefulWidget {
+  final DateTime startDate;
   final Color? selectedColor;
   final Color? unselectedColor;
+
+  final bool roundedDateStyle;
+
   final TextStyle? unselectedTextStyle;
   final TextStyle? selectedTextStyle;
   final Color? backgroundColor;
   final Color? selectedBorderColor;
   final Color? unselectedBorderColor;
   final double? itemWidth;
+
+  final double? dayTileWidth;
+  final double? dayTileHeight;
+
   final double? itemRadius;
   final double? borderwidth;
   final bool? monthVisibility;
+  final int dateDuration;
 
   final double? height;
 
@@ -34,7 +43,13 @@ class LinearCalendar extends StatefulWidget {
       this.itemWidth,
       this.monthVisibility,
       this.itemRadius,
-      this.borderwidth, this.selectedBorderColor, this.unselectedBorderColor});
+      this.borderwidth,
+      this.selectedBorderColor,
+      this.unselectedBorderColor,
+      required this.startDate,
+      this.dayTileWidth,
+      this.dayTileHeight,
+        this.roundedDateStyle=false, this.dateDuration=30});
 
   @override
   _LinearCalendarState createState() => _LinearCalendarState();
@@ -67,7 +82,7 @@ class _LinearCalendarState extends State<LinearCalendar> {
   @override
   Widget build(BuildContext context) {
     // Generate the next 30 days for the calendar
-    List<DateTime> dates = generateCalendarDates(DateTime.now(), 30);
+    List<DateTime> dates = generateCalendarDates(widget.startDate, widget.dateDuration);
 
     return Container(
       height: widget.height ?? 70,
@@ -96,13 +111,14 @@ class _LinearCalendarState extends State<LinearCalendar> {
               margin: const EdgeInsets.symmetric(horizontal: 4.0),
               decoration: BoxDecoration(
                 color: isSelected
-                    ? widget.selectedColor ?? Colors.blue
+                    ? widget.roundedDateStyle==false? widget.selectedColor ?? Colors.blue:widget.unselectedColor ?? Colors.transparent
                     : widget.unselectedColor ?? Colors.transparent,
                 borderRadius: BorderRadius.circular(widget.itemWidth ?? 8),
                 border: Border.all(
-                  color: isSelected ? widget.selectedBorderColor??Colors.blueAccent : widget.unselectedBorderColor??Colors.transparent,
-                  width: widget.borderwidth??1
-                ),
+                    color: isSelected
+                        ? widget.selectedBorderColor ?? Colors.blueAccent
+                        : widget.unselectedBorderColor ?? Colors.transparent,
+                    width: widget.borderwidth ?? 1),
               ),
               child: SingleChildScrollView(
                 child: Column(
@@ -122,6 +138,9 @@ class _LinearCalendarState extends State<LinearCalendar> {
                         // ),
                         ),
                     const SizedBox(height: 4),
+
+
+                    widget.roundedDateStyle==false?
                     Text(
                       date.day.toString(), // Day number (e.g. 12)
                       style: isSelected
@@ -130,6 +149,24 @@ class _LinearCalendarState extends State<LinearCalendar> {
                           : widget.unselectedTextStyle ??
                               const TextStyle(
                                   color: Colors.black, fontSize: 18),
+                    ):Container(
+                      alignment: Alignment.center,
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: isSelected?widget.selectedColor??Colors.green:widget.unselectedColor??Colors.white,
+
+                      ),
+                      child: Text(
+                        date.day.toString(), // Day number (e.g. 12)
+                        style: isSelected
+                            ? widget.selectedTextStyle ??
+                            const TextStyle(color: Colors.white, fontSize: 18)
+                            : widget.unselectedTextStyle ??
+                            const TextStyle(
+                                color: Colors.black, fontSize: 18),
+                      ),
                     ),
 
                     //const SizedBox(height: 4),

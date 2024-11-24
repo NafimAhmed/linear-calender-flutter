@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  RxString dateTime = ''.obs;
+  Rx<DateTime> dateTime = DateTime.now().obs;
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +53,27 @@ class Home extends StatelessWidget {
       ),
       body: Column(
         children: [
+
+
+
           LinearCalendar(
-            // selectedBorderColor: Colors.green,
+
+
+
+            roundedDateStyle: true,
+            dateDuration: 60,
+             selectedBorderColor: Colors.grey,
             // unselectedBorderColor: Colors.grey,
             height: 120,
-            monthVisibility: true,
-            borderwidth: 10,
+            monthVisibility: false,
+            selectedColor: Colors.grey,
+            borderwidth: 5,
             onChanged: (DateTime value) {
               debugPrint(
                   "*****************${value}***************************");
 
-              dateTime.value = '${value}';
-            },
+              dateTime.value = value;
+            }, startDate: DateTime.now(),
 
           ),
           Center(

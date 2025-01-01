@@ -24,7 +24,7 @@ To use `Linear_Calendar_Flutter`, add the following line to your `pubspec.yaml` 
 
 ```yaml
 dependencies:
-  linear_calendar_flutter: ^0.0.5
+  linear_calendar_flutter: ^0.0.6
   ```
 
 
@@ -88,5 +88,5 @@ To use the `Linear Date Picker`, add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  linear_date_picker: ^0.0.5
+  linear_date_picker: ^0.0.6
 ```

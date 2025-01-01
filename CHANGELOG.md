@@ -1,3 +1,11 @@
+
+## [0.0.6] - 2025-01-01
+### Added
+- Upgrade package.
+
+### Fixed
+- Upgrade package.
+
 ## [0.0.5] - 2024-10-20
 ### Added
 - Border redious for all date elements.

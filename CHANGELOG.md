@@ -1,4 +1,6 @@
-
+## [0.0.7] - 2026-06-14
+### Added
+- More dynamic.
 ## [0.0.6] - 2025-01-01
 ### Added
 - Upgrade package.

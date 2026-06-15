@@ -28,7 +28,7 @@ Add the dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  linear_calender: ^0.0.7
+  linear_calender: ^0.0.8
 ```
 
 Then run:
